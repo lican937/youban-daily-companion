@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f3ee">
+  <meta name="description" content="有伴：一个温柔的每日事项、定时提醒与鼓励小助手。">
+  <title>有伴 · 每日提醒</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://cdn.jsdelivr.net/npm/@fontsource-variable/nunito-sans@5.2.7/index.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@fontsource-variable/noto-sans-sc@5.2.10/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true"><symbol id="i-heart-handshake" viewBox="0 0 24 24">
+      <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+      <path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66" />
+      <path d="m18 15-2-2" />
+      <path d="m15 18-2-2" />
+    </symbol><symbol id="i-calendar-days" viewBox="0 0 24 24">
+      <path d="M8 2v4" />
+      <path d="M16 2v4" />
+      <rect width="18" height="18" x="3" y="4" rx="2" />
+      <path d="M3 10h18" />
+      <path d="M8 14h.01" />
+      <path d="M12 14h.01" />
+      <path d="M16 14h.01" />
+      <path d="M8 18h.01" />
+      <path d="M12 18h.01" />
+      <path d="M16 18h.01" />
+    </symbol><symbol id="i-list-checks" viewBox="0 0 24 24">
+      <path d="m3 17 2 2 4-4" />
+      <path d="m3 7 2 2 4-4" />
+      <path d="M13 6h8" />
+      <path d="M13 12h8" />
+      <path d="M13 18h8" />
+    </symbol><symbol id="i-chart-no-axes-column" viewBox="0 0 24 24">
+      <line x1="18" x2="18" y1="20" y2="10" />
+      <line x1="12" x2="12" y1="20" y2="4" />
+      <line x1="6" x2="6" y1="20" y2="14" />
+    </symbol><symbol id="i-settings" viewBox="0 0 24 24">
+      <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+      <circle cx="12" cy="12" r="3" />
+    </symbol><symbol id="i-shield-check" viewBox="0 0 24 24">
+      <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+      <path d="m9 12 2 2 4-4" />
+    </symbol><symbol id="i-plus" viewBox="0 0 24 24">
+      <path d="M5 12h14" />
+      <path d="M12 5v14" />
+    </symbol><symbol id="i-bell" viewBox="0 0 24 24">
+      <path d="M10.268 21a2 2 0 0 0 3.464 0" />
+      <path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" />
+    </symbol><symbol id="i-arrow-right" viewBox="0 0 24 24">
+      <path d="M5 12h14" />
+      <path d="m12 5 7 7-7 7" />
+    </symbol><symbol id="i-calendar" viewBox="0 0 24 24">
+      <path d="M8 2v4" />
+      <path d="M16 2v4" />
+      <rect width="18" height="18" x="3" y="4" rx="2" />
+      <path d="M3 10h18" />
+    </symbol><symbol id="i-chevron-left" viewBox="0 0 24 24">
+      <path d="m15 18-6-6 6-6" />
+    </symbol><symbol id="i-chevron-right" viewBox="0 0 24 24">
+      <path d="m9 18 6-6-6-6" />
+    </symbol><symbol id="i-lightbulb" viewBox="0 0 24 24">
+      <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+      <path d="M9 18h6" />
+      <path d="M10 22h4" />
+    </symbol><symbol id="i-quote" viewBox="0 0 24 24">
+      <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" />
+      <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" />
+    </symbol><symbol id="i-refresh-cw" viewBox="0 0 24 24">
+      <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+      <path d="M21 3v5h-5" />
+      <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+      <path d="M8 16H3v5" />
+    </symbol><symbol id="i-timer" viewBox="0 0 24 24">
+      <line x1="10" x2="14" y1="2" y2="2" />
+      <line x1="12" x2="15" y1="14" y2="11" />
+      <circle cx="12" cy="14" r="8" />
+    </symbol><symbol id="i-play" viewBox="0 0 24 24">
+      <polygon points="6 3 20 12 6 21 6 3" />
+    </symbol><symbol id="i-rotate-ccw" viewBox="0 0 24 24">
+      <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+      <path d="M3 3v5h5" />
+    </symbol><symbol id="i-search" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.3-4.3" />
+    </symbol><symbol id="i-circle-check" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <path d="m9 12 2 2 4-4" />
+    </symbol><symbol id="i-flame" viewBox="0 0 24 24">
+      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
+    </symbol><symbol id="i-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </symbol><symbol id="i-heart" viewBox="0 0 24 24">
+      <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+    </symbol><symbol id="i-bell-ring" viewBox="0 0 24 24">
+      <path d="M10.268 21a2 2 0 0 0 3.464 0" />
+      <path d="M22 8c0-2.3-.8-4.3-2-6" />
+      <path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" />
+      <path d="M4 2C2.8 3.7 2 5.7 2 8" />
+    </symbol><symbol id="i-send" viewBox="0 0 24 24">
+      <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
+      <path d="m21.854 2.147-10.94 10.939" />
+    </symbol><symbol id="i-database" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="5" rx="9" ry="3" />
+      <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+      <path d="M3 12A9 3 0 0 0 21 12" />
+    </symbol><symbol id="i-download" viewBox="0 0 24 24">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" x2="12" y1="15" y2="3" />
+    </symbol><symbol id="i-upload" viewBox="0 0 24 24">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="17 8 12 3 7 8" />
+      <line x1="12" x2="12" y1="3" y2="15" />
+    </symbol><symbol id="i-x" viewBox="0 0 24 24">
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </symbol><symbol id="i-check" viewBox="0 0 24 24">
+      <path d="M20 6 9 17l-5-5" />
+    </symbol><symbol id="i-pencil" viewBox="0 0 24 24">
+      <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+      <path d="m15 5 4 4" />
+    </symbol><symbol id="i-trash-2" viewBox="0 0 24 24">
+      <path d="M3 6h18" />
+      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+      <line x1="10" x2="10" y1="11" y2="17" />
+      <line x1="14" x2="14" y1="11" y2="17" />
+    </symbol><symbol id="i-coffee" viewBox="0 0 24 24">
+      <path d="M10 2v2" />
+      <path d="M14 2v2" />
+      <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1" />
+      <path d="M6 2v2" />
+    </symbol><symbol id="i-briefcase" viewBox="0 0 24 24">
+      <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+      <rect width="20" height="14" x="2" y="6" rx="2" />
+    </symbol><symbol id="i-book-open" viewBox="0 0 24 24">
+      <path d="M12 7v14" />
+      <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+    </symbol><symbol id="i-heart-pulse" viewBox="0 0 24 24">
+      <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+      <path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27" />
+    </symbol><symbol id="i-sparkles" viewBox="0 0 24 24">
+      <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+      <path d="M20 3v4" />
+      <path d="M22 5h-4" />
+      <path d="M4 17v2" />
+      <path d="M5 18H3" />
+    </symbol><symbol id="i-leaf" viewBox="0 0 24 24">
+      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+      <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+    </symbol><symbol id="i-pause" viewBox="0 0 24 24">
+      <rect x="14" y="4" width="4" height="16" rx="1" />
+      <rect x="6" y="4" width="4" height="16" rx="1" />
+    </symbol><symbol id="i-party-popper" viewBox="0 0 24 24">
+      <path d="M5.8 11.3 2 22l10.7-3.79" />
+      <path d="M4 3h.01" />
+      <path d="M22 8h.01" />
+      <path d="M15 2h.01" />
+      <path d="M22 20h.01" />
+      <path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10" />
+      <path d="m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11c-.11.7-.72 1.22-1.43 1.22H17" />
+      <path d="m11 2 .33.82c.34.86-.2 1.82-1.11 1.98C9.52 4.9 9 5.52 9 6.23V7" />
+      <path d="M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z" />
+    </symbol></svg>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="主导航">
+      <a class="brand" href="#today" data-view-link="today" aria-label="有伴首页">
+        <span class="brand-mark"><svg class="icon"><use href="#i-heart-handshake"></use></svg></span>
+        <span><strong>有伴</strong><small>YOUR DAILY COMPANION</small></span>
+      </a>
+      <nav class="side-nav">
+        <button class="nav-item active" data-view="today"><svg class="icon"><use href="#i-calendar-days"></use></svg><span>今天</span><span class="nav-dot" id="today-nav-dot"></span></button>
+        <button class="nav-item" data-view="tasks"><svg class="icon"><use href="#i-list-checks"></use></svg><span>全部事项</span></button>
+        <button class="nav-item" data-view="stats"><svg class="icon"><use href="#i-chart-no-axes-column"></use></svg><span>成长记录</span></button>
+        <button class="nav-item" data-view="settings"><svg class="icon"><use href="#i-settings"></use></svg><span>偏好设置</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="local-note"><svg class="icon"><use href="#i-shield-check"></use></svg><div><strong>只属于你们的小空间</strong><span>数据仅保存在当前浏览器</span></div></div>
+        <button class="sidebar-add" data-action="new-task"><svg class="icon"><use href="#i-plus"></use></svg>添加一件小事</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark"><svg class="icon"><use href="#i-heart-handshake"></use></svg></span><strong>有伴</strong></div>
+        <div class="topbar-title"><p id="topbar-date"></p><h2 id="page-title">今天</h2></div>
+        <div class="topbar-actions">
+          <button class="icon-button notification-button" id="top-notification" aria-label="设置通知" title="通知设置"><svg class="icon"><use href="#i-bell"></use></svg><span id="notification-dot"></span></button>
+          <button class="button primary top-add" data-action="new-task"><svg class="icon"><use href="#i-plus"></use></svg><span>新事项</span></button>
+        </div>
+      </header>
+
+      <section class="view active" id="view-today" aria-labelledby="page-title">
+        <div class="today-grid">
+          <div class="today-main">
+            <section class="daily-brief" aria-label="今日概览">
+              <div class="brief-copy">
+                <div class="brief-eyebrow"><span id="brief-weekday"></span><span class="brief-line"></span><span id="brief-date"></span></div>
+                <h1 id="greeting-title">今天，也一起把日子过好。</h1>
+                <p id="greeting-subtitle">不用一下子做完所有事，完成一件，就值得开心。</p>
+                <button class="text-button light" id="hero-next-task">看看下一件事<svg class="icon"><use href="#i-arrow-right"></use></svg></button>
+              </div>
+              <div class="daily-progress">
+                <div class="progress-ring" id="daily-ring" style="--progress:0">
+                  <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="ring-track" cx="60" cy="60" r="50"></circle><circle class="ring-value" cx="60" cy="60" r="50"></circle></svg>
+                  <div><strong id="daily-percent">0%</strong><span>今日完成</span></div>
+                </div>
+                <p id="daily-count">今天还没有安排</p>
+              </div>
+            </section>
+
+            <section class="panel schedule-panel">
+              <div class="panel-heading schedule-heading">
+                <div><span class="section-kicker">DAILY RHYTHM</span><h2>今天的安排</h2></div>
+                <div class="date-switcher" aria-label="切换日期">
+                  <button class="icon-button small" id="date-prev" aria-label="前一天"><svg class="icon"><use href="#i-chevron-left"></use></svg></button>
+                  <button class="date-label" id="date-today" title="回到今天"><svg class="icon"><use href="#i-calendar"></use></svg><span id="selected-date-label">今天</span></button>
+                  <button class="icon-button small" id="date-next" aria-label="后一天"><svg class="icon"><use href="#i-chevron-right"></use></svg></button>
+                </div>
+              </div>
+              <div class="schedule-tools">
+                <div class="segmented" id="today-filters" aria-label="筛选今日事项">
+                  <button class="active" data-filter="all">全部</button><button data-filter="pending">待完成</button><button data-filter="done">已完成</button>
+                </div>
+                <span class="quiet-label" id="schedule-summary"></span>
+              </div>
+              <div class="sample-note" id="sample-note" hidden><svg class="icon"><use href="#i-lightbulb"></use></svg><span>先放了几件示例小事，你可以直接修改，也可以清空后重新开始。</span><button id="clear-samples">清空示例</button></div>
+              <div class="task-list" id="today-task-list"></div>
+              <button class="inline-add" data-action="new-task"><svg class="icon"><use href="#i-plus"></use></svg>给这一天添一件小事</button>
+            </section>
+          </div>
+
+          <aside class="today-aside">
+            <section class="note-card">
+              <div class="note-tape" aria-hidden="true"></div>
+              <div class="note-heading"><span><svg class="icon"><use href="#i-quote"></use></svg>今日小纸条</span><button class="icon-button small" id="next-quote" aria-label="换一句鼓励" title="换一句"><svg class="icon"><use href="#i-refresh-cw"></use></svg></button></div>
+              <blockquote id="daily-quote"></blockquote>
+              <div class="note-footer"><span id="quote-signature"></span><button class="text-button" id="edit-quotes">写几句心里话</button></div>
+            </section>
+
+            <section class="panel focus-card">
+              <div class="panel-heading compact"><div><span class="section-kicker">A QUIET MOMENT</span><h3>专心这一会儿</h3></div><svg class="icon heading-icon"><use href="#i-timer"></use></svg></div>
+              <div class="focus-clock" aria-live="polite"><span id="focus-time">25:00</span><small id="focus-state-label">准备好就开始</small></div>
+              <div class="focus-presets" id="focus-presets"><button data-minutes="15">15 分钟</button><button class="active" data-minutes="25">25 分钟</button><button data-minutes="45">45 分钟</button></div>
+              <div class="focus-actions"><button class="button primary" id="focus-toggle"><svg class="icon"><use href="#i-play"></use></svg><span>开始专注</span></button><button class="icon-button" id="focus-reset" aria-label="重置计时" title="重置"><svg class="icon"><use href="#i-rotate-ccw"></use></svg></button></div>
+            </section>
+
+            <section class="panel week-card">
+              <div class="panel-heading compact"><div><span class="section-kicker">LITTLE WINS</span><h3>这一周的足迹</h3></div><button class="text-button" data-view-link="stats">详情</button></div>
+              <div class="week-strip" id="week-strip"></div>
+              <p class="week-caption" id="week-caption"></p>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="view-tasks" aria-label="全部事项">
+        <div class="view-intro"><div><span class="section-kicker">YOUR ROUTINES</span><h1>每一件想做的事，都有着落。</h1><p>设置一次，之后按你的节奏出现在每日清单里。</p></div><button class="button primary" data-action="new-task"><svg class="icon"><use href="#i-plus"></use></svg>添加事项</button></div>
+        <section class="panel all-tasks-panel">
+          <div class="task-toolbar">
+            <label class="search-box"><svg class="icon"><use href="#i-search"></use></svg><input type="search" id="task-search" placeholder="搜索事项或备注" aria-label="搜索事项"></label>
+            <select id="category-filter" aria-label="按分类筛选"><option value="all">全部分类</option><option value="life">生活</option><option value="work">工作</option><option value="study">学习</option><option value="health">健康</option><option value="love">关系</option><option value="other">其他</option></select>
+            <select id="repeat-filter" aria-label="按重复规则筛选"><option value="all">全部频率</option><option value="daily">每天</option><option value="weekdays">工作日</option><option value="weekends">周末</option><option value="weekly">每周</option><option value="once">单次</option></select>
+          </div>
+          <div class="list-meta" id="all-tasks-meta"></div>
+          <div class="all-task-list" id="all-task-list"></div>
+        </section>
+      </section>
+
+      <section class="view" id="view-stats" aria-label="成长记录">
+        <div class="view-intro"><div><span class="section-kicker">SMALL STEPS, REAL CHANGE</span><h1>认真生活的证据，都留在这里。</h1><p>不比快慢，只看看自己已经走了多远。</p></div></div>
+        <div class="stats-grid">
+          <article class="stat-card accent-stat"><span class="stat-icon"><svg class="icon"><use href="#i-flame"></use></svg></span><div><strong id="stat-streak">0</strong><span>连续完成天数</span></div><small id="streak-caption">从完成第一天开始</small></article>
+          <article class="stat-card"><span class="stat-icon"><svg class="icon"><use href="#i-circle-check"></use></svg></span><div><strong id="stat-total">0</strong><span>累计完成事项</span></div><small>每一次打勾都算数</small></article>
+          <article class="stat-card"><span class="stat-icon"><svg class="icon"><use href="#i-clock"></use></svg></span><div><strong id="stat-focus">0</strong><span>累计专注分钟</span></div><small>留给自己安静的时间</small></article>
+        </div>
+        <div class="stats-layout">
+          <section class="panel chart-panel"><div class="panel-heading"><div><span class="section-kicker">THIS WEEK</span><h2>本周完成节奏</h2></div><span class="quiet-label" id="week-total-label"></span></div><div class="bar-chart" id="week-chart"></div><p class="chart-note">完成率 = 已完成事项 ÷ 当日应完成事项；没有安排的日子不计入。</p></section>
+          <section class="panel category-panel"><div class="panel-heading"><div><span class="section-kicker">WHERE TIME GOES</span><h2>生活由这些组成</h2></div></div><div id="category-stats"></div></section>
+        </div>
+      </section>
+
+      <section class="view" id="view-settings" aria-label="偏好设置">
+        <div class="view-intro"><div><span class="section-kicker">MAKE IT YOURS</span><h1>把“有伴”调成你喜欢的样子。</h1><p>称呼、鼓励、提醒方式，都可以由你决定。</p></div></div>
+        <div class="settings-layout">
+          <div class="settings-main">
+            <form class="panel settings-section" id="profile-form">
+              <div class="settings-heading"><span class="settings-icon"><svg class="icon"><use href="#i-heart"></use></svg></span><div><h2>你们的小空间</h2><p>一句熟悉的称呼，会让提醒更像陪伴。</p></div></div>
+              <div class="form-grid two-columns"><label class="field"><span>怎么称呼 TA</span><input id="nickname-input" maxlength="16" placeholder="比如：小朋友"></label><label class="field"><span>小纸条署名</span><input id="signature-input" maxlength="30" placeholder="比如：永远支持你的人"></label></div>
+              <label class="field"><span>你们的鼓励语 <small>每行一句，会随机出现在今日小纸条</small></span><textarea id="custom-quotes-input" rows="5" placeholder="今天也很喜欢你。\n你已经做得很好了。"></textarea></label>
+              <div class="form-actions"><button type="submit" class="button primary">保存这些心意</button><span class="save-hint" id="profile-save-hint"></span></div>
+            </form>
+
+            <section class="panel settings-section">
+              <div class="settings-heading"><span class="settings-icon"><svg class="icon"><use href="#i-bell-ring"></use></svg></span><div><h2>提醒方式</h2><p>页面打开时按设定时间提醒，授权后也能显示系统通知。</p></div></div>
+              <div class="setting-row"><div><strong>浏览器通知</strong><span id="notification-status">尚未设置</span></div><label class="switch"><input type="checkbox" id="notification-toggle" aria-label="启用浏览器通知"><span></span></label></div>
+              <div class="setting-row"><div><strong>提醒提示音</strong><span>提醒时播放一声轻柔提示音</span></div><label class="switch"><input type="checkbox" id="sound-toggle" aria-label="启用提示音"><span></span></label></div>
+              <div class="setting-row"><div><strong>外观模式</strong><span>选择让眼睛舒服的阅读方式</span></div><select id="theme-select" aria-label="外观模式"><option value="light">明亮</option><option value="dark">夜间</option><option value="system">跟随系统</option></select></div>
+              <div class="notification-actions"><button class="button secondary" id="test-notification"><svg class="icon"><use href="#i-send"></use></svg>发送一条测试提醒</button><span>关闭页面后，浏览器无法保证继续提醒。</span></div>
+            </section>
+          </div>
+          <aside class="settings-aside">
+            <section class="panel settings-section data-card"><div class="settings-heading"><span class="settings-icon"><svg class="icon"><use href="#i-database"></use></svg></span><div><h2>数据与备份</h2><p>所有数据只在这台设备的当前浏览器中。</p></div></div><button class="button secondary full" id="export-data"><svg class="icon"><use href="#i-download"></use></svg>导出备份文件</button><button class="button secondary full" id="import-data"><svg class="icon"><use href="#i-upload"></use></svg>导入备份文件</button><p class="settings-tip">更换浏览器或清理网站数据前，建议先导出备份。</p></section>
+            <section class="panel settings-section danger-card"><h3>重新开始</h3><p>清空全部事项、打卡和设置，并恢复初始示例。</p><button class="button danger" id="reset-data">清空并恢复初始状态</button></section>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <nav class="mobile-nav" aria-label="移动端导航">
+      <button class="active" data-view="today"><svg class="icon"><use href="#i-calendar-days"></use></svg><span>今天</span></button>
+      <button data-view="tasks"><svg class="icon"><use href="#i-list-checks"></use></svg><span>事项</span></button>
+      <button data-view="stats"><svg class="icon"><use href="#i-chart-no-axes-column"></use></svg><span>记录</span></button>
+      <button data-view="settings"><svg class="icon"><use href="#i-settings"></use></svg><span>设置</span></button>
+    </nav>
+  </div>
+
+  <dialog class="task-dialog" id="task-dialog" aria-labelledby="task-dialog-title">
+    <form id="task-form">
+      <div class="dialog-heading"><div><span class="section-kicker">A LITTLE PLAN</span><h2 id="task-dialog-title">添加一件小事</h2></div><button type="button" class="icon-button" id="close-task-dialog" aria-label="关闭"><svg class="icon"><use href="#i-x"></use></svg></button></div>
+      <input type="hidden" id="task-id">
+      <label class="field"><span>想做什么？</span><input id="task-title" required maxlength="60" placeholder="比如：晚上一起散步" autocomplete="off"></label>
+      <div class="form-grid two-columns"><label class="field"><span>提醒时间</span><input type="time" id="task-time" required value="09:00"></label><label class="field"><span>分类</span><select id="task-category"><option value="life">生活</option><option value="work">工作</option><option value="study">学习</option><option value="health">健康</option><option value="love">关系</option><option value="other">其他</option></select></label></div>
+      <div class="form-grid two-columns"><label class="field"><span>重复频率</span><select id="task-repeat"><option value="daily">每天</option><option value="weekdays">工作日（周一至周五）</option><option value="weekends">周末（周六、周日）</option><option value="weekly">每周指定一天</option><option value="once">只做一次</option></select></label><label class="field" id="weekday-field" hidden><span>每周哪一天</span><select id="task-weekday"><option value="1">周一</option><option value="2">周二</option><option value="3">周三</option><option value="4">周四</option><option value="5">周五</option><option value="6">周六</option><option value="0">周日</option></select></label><label class="field"><span id="start-date-label">开始日期</span><input type="date" id="task-start-date" required></label></div>
+      <label class="field"><span>提前提醒</span><select id="task-remind"><option value="0">准点提醒</option><option value="5">提前 5 分钟</option><option value="10">提前 10 分钟</option><option value="30">提前 30 分钟</option><option value="60">提前 1 小时</option></select></label>
+      <label class="field"><span>给未来的自己留句话 <small>选填</small></span><textarea id="task-notes" rows="3" maxlength="160" placeholder="比如：不用走太远，吹吹风就很好。"></textarea></label>
+      <div class="dialog-footer"><button type="button" class="button danger ghost" id="dialog-delete" hidden>删除事项</button><div><button type="button" class="button secondary" id="cancel-task">取消</button><button type="submit" class="button primary" id="save-task">保存事项</button></div></div>
+    </form>
+  </dialog>
+
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <input type="file" id="import-file" accept="application/json,.json" hidden>
+    <script src="./app.js"></script>
+</body>
+</html>
